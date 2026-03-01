@@ -12,13 +12,13 @@ export async function fetchTodayWeather(location) {
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error('Failed to fetch weather data');
+      throw new Error('Failed to fetch weather data, please try again later');
     }
 
     const data = await response.json();
 
     return data;
   } catch (error) {
-    displayError(error);
+    throw new Error(error.message);
   }
 }
